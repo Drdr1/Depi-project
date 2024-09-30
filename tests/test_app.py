@@ -1,4 +1,5 @@
 from app import app
+from werkzeug.urls import url_quote
 
 def test_index():
     client = app.test_client()
