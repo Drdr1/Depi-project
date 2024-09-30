@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'docker run my-flask-app python -m pytest tests/test_app.py'
+        sh 'docker run my-flask-app python -m pytest tests/ app/tests/'
       }
     }
     stage('Deploy') {
