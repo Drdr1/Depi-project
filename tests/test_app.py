@@ -1,6 +1,5 @@
 from app import app
-from werkzeug.urls import url_quote
-
+from urllib.parse import quote as url_quote
 def test_index():
     client = app.test_client()
     response = client.get('/')
