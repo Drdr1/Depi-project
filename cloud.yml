@@ -1,6 +1,6 @@
 ---
 - name: Deploy my_flask_app to Kubernetes
-  hosts: localhost
+  hosts: 44.220.150.183 , 3.235.192.151
   become: true
   tasks:
   - name: Deploy Docker image
