@@ -20,7 +20,12 @@ pipeline {
           sh 'docker push $DOCKER_BFLASK_IMAGE'
           ansiblePlaybook(
                     playbook: 'cloud.yml',
-                    inventory: 'inventory',)
+                    inventory: 'inventory',
+            extraVars: [
+                        'ansible_user': 'ubuntu',
+                       
+                    ]
+          )
         }
       }
     }
