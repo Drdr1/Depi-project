@@ -23,15 +23,6 @@ pipeline {
       }
     }
   }
-  stage('Run Ansible Playbook') {
-            steps {
-                script {
-
-                   ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
-                }
-            }
-        }
-    }
   post {
     always {
       sh 'docker logout'
