@@ -1,27 +1,17 @@
 ---
-- name: Deploy my_flask_app to Kubernetes
-  hosts: localhost
+- name: Deploy application
+  hosts: ec2
   become: true
+
   tasks:
-  - name: Deploy Docker image
-    kubernetes:
-      definition:
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: flask_app
-        spec:
-          replicas: 3
-          selector:
-            matchLabels:
-              app: flask_app
-          template:
-            metadata:
-              labels:
-                app: flask_app
-            spec:
-              containers:
-              - name: flask_app
-                image: ahmeddarder1/dr
-                ports:
-                - containerPort: 5000
+  - name: Pull Docker image
+    docker_image:
+      name: ahmeddarder1/dr
+      source: pull
+
+  - name: Run Docker container
+    docker_container:
+      name: flask-app
+      image: ahmeddarder1/dr
+      ports:
+      - "80:5000"
