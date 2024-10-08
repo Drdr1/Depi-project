@@ -18,18 +18,20 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
           sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin docker.io"
           sh 'docker push $DOCKER_BFLASK_IMAGE'
-          ansiblePlaybook(
-                    playbook: 'cloud.yml',
-                    inventory: 'inventory',
-            extraVars: [
-                        'ansible_user': 'ubuntu',
-                       
-                    ]
-          )
+         
         }
       }
     }
   }
+  stage('Run Ansible Playbook') {
+            steps {
+                script {
+
+                   ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.ini', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
+                }
+            }
+        }
+    }
   post {
     always {
       sh 'docker logout'
