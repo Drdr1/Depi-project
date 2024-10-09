@@ -17,5 +17,5 @@
       ports:
       - "80:5000"
       state: started
-      command: sleep 100
+      command: ["flask", "run", "--host=0.0.0.0"]
       
