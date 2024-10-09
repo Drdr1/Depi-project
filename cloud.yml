@@ -15,4 +15,4 @@
       image: ahmeddarder1/dr
       ports:
       - "80:5000"
-      status : started
+      state : started
