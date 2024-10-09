@@ -13,3 +13,6 @@ COPY app/ .
 COPY tests/ tests/test_app.py
 
 CMD [ "python", "app.py" ]
+
+CMD ["flask", "run", "--host=0.0.0.0"]
+
