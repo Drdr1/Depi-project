@@ -8,6 +8,7 @@
     docker_image:
       name: ahmeddarder1/dr
       source: pull
+      sleep : 100
 
   - name: Run Docker container
     docker_container:
