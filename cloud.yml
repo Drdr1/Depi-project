@@ -15,4 +15,5 @@
       image: ahmeddarder1/dr
       ports:
       - "80:5000"
-      state : started
+      state: started
+      detach: yes
