@@ -24,7 +24,7 @@ pipeline {
     stage('Run Ansible Playbook') {
       steps {
         script {
-          ansiblePlaybook credentialsId: 'private_key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.ini', playbook: 'cloud.yml', vaultTmpPath: ''
+           ansiblePlaybook credentialsId: 'private_key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.ini', playbook: 'cloud.yml', vaultTmpPath: ''
         }
       }
     }
