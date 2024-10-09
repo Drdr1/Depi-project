@@ -17,4 +17,5 @@
       ports:
       - "80:5000"
       state: started
+      command: sleep 100
       detach: yes
