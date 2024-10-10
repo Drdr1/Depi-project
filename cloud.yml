@@ -16,6 +16,8 @@
       ports:
       - "80:5000"
       state: started
+      command: "python -m pytest tests"
+      detach: yes
       command: ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 
   - name: Wait for container to start
@@ -35,9 +37,4 @@
     until: result.status == 200
     retries: 10
     delay: 5
-  - name: Run a Docker container in detached mode
-    docker_container:
-    name: my-flask-app
-    image: ahmeddarder1/dr
-    command: "python -m pytest tests"
-    detach: yes
+ 
