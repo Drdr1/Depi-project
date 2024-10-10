@@ -35,3 +35,9 @@
     until: result.status == 200
     retries: 10
     delay: 5
+  - name: Run a Docker container in detached mode
+    docker_container:
+    name: my-flask-app
+    image: ahmeddarder1/dr
+    command: "python -m pytest tests"
+    detach: yes
